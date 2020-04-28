@@ -1,0 +1,2 @@
+class RubyTopic < ApplicationRecord
+end
