@@ -1,0 +1,2 @@
+class JavascriptTopic < ApplicationRecord
+end
