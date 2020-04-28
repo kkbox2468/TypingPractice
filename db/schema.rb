@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_28_094710) do
+ActiveRecord::Schema.define(version: 2020_04_28_095940) do
 
   create_table "achievements", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -26,6 +26,19 @@ ActiveRecord::Schema.define(version: 2020_04_28_094710) do
     t.index ["javascript_topic_id"], name: "index_achievements_on_javascript_topic_id"
     t.index ["ruby_topic_id"], name: "index_achievements_on_ruby_topic_id"
     t.index ["user_id"], name: "index_achievements_on_user_id"
+  end
+
+  create_table "battle_records", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "enemy_id"
+    t.integer "time"
+    t.integer "letter_count"
+    t.integer "speed"
+    t.string "wrong_letter"
+    t.integer "wrong_letter_count"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_battle_records_on_user_id"
   end
 
   create_table "javascript_topics", force: :cascade do |t|
@@ -51,4 +64,5 @@ ActiveRecord::Schema.define(version: 2020_04_28_094710) do
   add_foreign_key "achievements", "javascript_topics"
   add_foreign_key "achievements", "ruby_topics"
   add_foreign_key "achievements", "users"
+  add_foreign_key "battle_records", "users"
 end
