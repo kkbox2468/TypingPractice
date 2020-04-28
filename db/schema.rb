@@ -10,7 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_28_085930) do
+ActiveRecord::Schema.define(version: 2020_04_28_094710) do
+
+  create_table "achievements", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "time"
+    t.integer "letter_count"
+    t.integer "speed"
+    t.string "wrong_letter"
+    t.integer "wrong_letter_count"
+    t.integer "javascript_topic_id", null: false
+    t.integer "ruby_topic_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["javascript_topic_id"], name: "index_achievements_on_javascript_topic_id"
+    t.index ["ruby_topic_id"], name: "index_achievements_on_ruby_topic_id"
+    t.index ["user_id"], name: "index_achievements_on_user_id"
+  end
 
   create_table "javascript_topics", force: :cascade do |t|
     t.text "javascript_topic"
@@ -32,4 +48,7 @@ ActiveRecord::Schema.define(version: 2020_04_28_085930) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "achievements", "javascript_topics"
+  add_foreign_key "achievements", "ruby_topics"
+  add_foreign_key "achievements", "users"
 end
