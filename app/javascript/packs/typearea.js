@@ -1,7 +1,6 @@
 const RNADOM_QUOTE_API_URL = 'https://api.quotable.io/random'
 const quoteDisplayElement = document.getElementById('quoteDisplay')
 const quoteInputElement = document.getElementById('quoteInput')
-const timerElement = document.getElementById('timer')
 
 
 /* 監聽input中的改變 */ 
@@ -110,20 +109,27 @@ async function renderNextQuote() {
 }
 
 let startTime
+// const minElement = document.getElementById('minutes')
+const secElement = document.getElementById('seconds')
 const millisecElement = document.getElementById('millisec')
+
 function startTimer() {
-  timerElement.innerText = '0'
+  let n = 0;
+  // minElement.innerText = '0'
+  secElement.innerText = '0'
+  millisecElement.innerText = '0'
   startTime = new Date() //這會把時間設為current time
-  setInterval(() => { //不太明白setInterval原理
-    timerElement.innerText = getTimerTime()
+  setInterval(() => {
+    secElement.innerText = getTimerTime()
     millisecElement.innerText = getTimeMillisec()
-    // timer.innerText = getTimerTime() //為什麼這行timer也抓得到timerElement?
+    // timer.innerText = getTimerTime() //為什麼這行timer也抓得到secElement?
   }, 100)
+
 
   /* 可以用監聽來做觸發，但時間不對，雖然沒觸發可是時間已經開始跑 */
   // quoteInputElement.addEventListener('input', () => {
   //   setInterval(() => {
-  //     timerElement.innerText = getTimerTime()
+  //     secElement.innerText = getTimerTime()
   //   }, 1000)
   // })
 }
@@ -132,8 +138,8 @@ function getTimerTime() {
  return Math.floor((new Date() - startTime) / 1000)
 }
 function getTimeMillisec() {
-  let milliseconds = new Date().getMilliseconds()
-  return milliseconds;
+  return Math.floor(new Date().getMilliseconds() / 10)
+  
 }
 /* 鍵盤音效 */
 function playSound() {
