@@ -13,7 +13,20 @@ const timerElement = document.getElementById('timer')
 //   console.log(e.keyCode);
 // })
 
-
+/* 封鎖滑鼠事件 */
+let blockArea = document.querySelector('body')
+blockArea.addEventListener('click', (e) => {
+  e.stopPropagation();
+  e.preventDefault();
+})
+blockArea.addEventListener('mouseup', (e) => {
+  e.stopPropagation();
+  e.preventDefault();
+})
+blockArea.addEventListener('mousedown', (e) => {
+  e.stopPropagation();
+  e.preventDefault();
+})
 
 /* 比對input內的文字，來標注正確與錯誤提示 */ 
 

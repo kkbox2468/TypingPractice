@@ -67,6 +67,11 @@ body .quote-input{
   text-decoration: underline;
   background-color: rgb(117, 117, 117);
 }
+
+
+
+
+
 .correct{
   color: rgb(93, 192, 0);
   background-color: rgb(208, 238, 180);
