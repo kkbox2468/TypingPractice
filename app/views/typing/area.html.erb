@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
-  <%# <link rel="stylesheet" href="styles.css"> %>
-  <%# <script src="script.js" defer ></script> %>
   <title>Speed Typing</title>
 </head>
 <body>
@@ -18,7 +16,7 @@
   </div>
 
   <audio id="keyboard-sound">
-    <source src="/public/sound/keyboard_sound01.wav" type="audio/wav" > 
+    <source src="/sound/keyboard_sound01.wav" type="audio/wav" > 
   </audio>
   <%= javascript_pack_tag 'typearea', 'data-turbolinks-track': 'reload' %>
 </body>

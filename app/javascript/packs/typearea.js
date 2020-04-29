@@ -15,11 +15,8 @@ quoteInputElement.addEventListener('input', () => {
   const arrayQuote = quoteDisplayElement.querySelectorAll('span');
   const arrayValue = quoteInputElement.value.split('')
   const inputIndex = quoteInputElement.value.length
-  
   // console.log(inputIndex)
   // console.log(arrayQuote[inputIndex])
-
-  
   // console.log(arrayQuote[1]);
   let correct = true;
   let rightCounter = 0;
@@ -34,6 +31,7 @@ quoteInputElement.addEventListener('input', () => {
       arrayQuote[inputIndex + 1 ].classList.remove('selected')
       arrayQuote[inputIndex - 1 ].classList.remove('selected')
       correct = false
+
     } else if (character === characterSpan.innerText){
       characterSpan.classList.add('correct')
       characterSpan.classList.remove('incorrect')
