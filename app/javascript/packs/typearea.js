@@ -8,13 +8,21 @@ const timerElement = document.getElementById('timer')
 // quoteInputElement.addEventListener('input', () => {
 //   console.log('changed');
 // })
+/* 監聽鍵盤事件 */
+// window.addEventListener('keypress', function (e) {
+//   console.log(e.keyCode);
+// })
+
 
 
 /* 比對input內的文字，來標注正確與錯誤提示 */ 
+
+let textAmount = 0;
 quoteInputElement.addEventListener('input', () => {
   const arrayQuote = quoteDisplayElement.querySelectorAll('span');
   const arrayValue = quoteInputElement.value.split('')
   const inputIndex = quoteInputElement.value.length
+  let keyNumber = window.keyCode
   // console.log(inputIndex)
   // console.log(arrayQuote[inputIndex])
   // console.log(arrayQuote[1]);
@@ -43,16 +51,23 @@ quoteInputElement.addEventListener('input', () => {
       correct = false
     }
   })
+  
+  if (event.data == null){
+    return ;
+  } else {
+    textAmount++;
+    console.log(`按鍵次數: ${textAmount}`);
+    console.log(event.data);
+  }
+
+  
   //印出正確與錯誤次數
-  console.log(`right times: ${rightCounter}`);
-  console.log(`wrong times: ${wrongCounter}`);
-  if (correct) renderNextQuote()
+  console.log(`正確次數: ${rightCounter}`);
+  console.log(`錯誤次數: ${wrongCounter}`);
+  if (correct) renderNextQuote();
 })
 
-/* 監聽鍵盤事件 */
-window.addEventListener('keypress', function (e) {
-  // console.log(e.keyCode);
-})
+
 
 
 function getRandomQuote() {
