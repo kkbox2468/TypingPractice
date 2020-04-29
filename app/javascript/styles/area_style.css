@@ -11,6 +11,7 @@ body{
   min-height: 100vh; 
   /* 這行可以讓物件垂直置中＠＠ */
   margin: 0;
+  font-family: 'Courier New', Courier, monospace;
   /* 出現scroll bar 用這行移除 */
   /* background-color: rgb(27, 29, 41); */
 }

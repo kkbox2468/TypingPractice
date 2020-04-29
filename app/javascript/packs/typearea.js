@@ -1,6 +1,7 @@
 const RNADOM_QUOTE_API_URL = 'https://api.quotable.io/random'
 const quoteDisplayElement = document.getElementById('quoteDisplay')
 const quoteInputElement = document.getElementById('quoteInput')
+const wpmElement = document.getElementById('wpm')
 
 
 /* 監聽input中的改變 */ 
@@ -30,6 +31,7 @@ blockArea.addEventListener('mousedown', (e) => {
 /* 比對input內的文字，來標注正確與錯誤提示 */ 
 
 let textAmount = 0;
+
 quoteInputElement.addEventListener('input', () => {
   const arrayQuote = quoteDisplayElement.querySelectorAll('span');
   const arrayValue = quoteInputElement.value.split('')
@@ -63,23 +65,35 @@ quoteInputElement.addEventListener('input', () => {
       correct = false
     }
   })
-  
+
   if (event.data == null){
     return ;
   } else {
     textAmount++;
-    console.log(`按鍵次數: ${textAmount}`);
     console.log(event.data);
+    console.log(`按鍵次數: ${textAmount}`);
   }
   //印出正確與錯誤次數
   console.log(`正確次數: ${rightCounter}`);
   console.log(`錯誤次數: ${wrongCounter}`);
+
+
+  if (secElement.innerText % 15 === 0) {
+    let wpm = Math.floor((textAmount / 1.5));
+    wpmElement.innerText = `${wpm}wpm`
+    //TODO: 計算有誤，textAmount一直往上家，就會速度越來越快，又無法歸零
+    console.log(`-------------${wpm}------------`);
+  }
+
+
+
   if (correct) {
     renderNextQuote();
     textAmount = 0;
   }
 })
 
+/*  抓取隨機英文段落作為題目 */
 function getRandomQuote() {
   return  fetch(RNADOM_QUOTE_API_URL)
     .then(response => response.json())
@@ -114,7 +128,6 @@ const secElement = document.getElementById('seconds')
 const millisecElement = document.getElementById('millisec')
 
 function startTimer() {
-  let n = 0;
   // minElement.innerText = '0'
   secElement.innerText = '0'
   millisecElement.innerText = '0'
@@ -122,16 +135,15 @@ function startTimer() {
   setInterval(() => {
     secElement.innerText = getTimerTime()
     millisecElement.innerText = getTimeMillisec()
+    /* 想要做歸零功能但不work */
+    // if (secElement.innerText === 3){
+    //   secElement.innerText = null;
+    // } else {
+    // secElement.innerText = getTimerTime()
+    // }
+
     // timer.innerText = getTimerTime() //為什麼這行timer也抓得到secElement?
   }, 100)
-
-
-  /* 可以用監聽來做觸發，但時間不對，雖然沒觸發可是時間已經開始跑 */
-  // quoteInputElement.addEventListener('input', () => {
-  //   setInterval(() => {
-  //     secElement.innerText = getTimerTime()
-  //   }, 1000)
-  // })
 }
 
 function getTimerTime() {
