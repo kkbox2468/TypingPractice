@@ -53,14 +53,6 @@ ActiveRecord::Schema.define(version: 2020_04_28_095940) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   add_foreign_key "achievements", "javascript_topics"
   add_foreign_key "achievements", "ruby_topics"
   add_foreign_key "achievements", "users"
