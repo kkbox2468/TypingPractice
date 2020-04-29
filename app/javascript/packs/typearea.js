@@ -72,16 +72,14 @@ quoteInputElement.addEventListener('input', () => {
     console.log(`按鍵次數: ${textAmount}`);
     console.log(event.data);
   }
-
-  
   //印出正確與錯誤次數
   console.log(`正確次數: ${rightCounter}`);
   console.log(`錯誤次數: ${wrongCounter}`);
-  if (correct) renderNextQuote();
+  if (correct) {
+    renderNextQuote();
+    textAmount = 0;
+  }
 })
-
-
-
 
 function getRandomQuote() {
   return  fetch(RNADOM_QUOTE_API_URL)
@@ -112,15 +110,15 @@ async function renderNextQuote() {
 }
 
 let startTime
+const millisecElement = document.getElementById('millisec')
 function startTimer() {
   timerElement.innerText = '0'
   startTime = new Date() //這會把時間設為current time
-
-
   setInterval(() => { //不太明白setInterval原理
     timerElement.innerText = getTimerTime()
+    millisecElement.innerText = getTimeMillisec()
     // timer.innerText = getTimerTime() //為什麼這行timer也抓得到timerElement?
-  }, 1000)
+  }, 100)
 
   /* 可以用監聽來做觸發，但時間不對，雖然沒觸發可是時間已經開始跑 */
   // quoteInputElement.addEventListener('input', () => {
@@ -133,7 +131,11 @@ function startTimer() {
 function getTimerTime() {
  return Math.floor((new Date() - startTime) / 1000)
 }
-
+function getTimeMillisec() {
+  let milliseconds = new Date().getMilliseconds()
+  return milliseconds;
+}
+/* 鍵盤音效 */
 function playSound() {
   const sound = document.getElementById('keyboard-sound')
   // if (!sound) return ;//stop the function from running all together

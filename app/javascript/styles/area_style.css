@@ -27,13 +27,22 @@ body .quote-input{
   max-width: 90%;
   color: aliceblue;
 }
-
-.timer{
+.time-counter{
   position: absolute;
-  top: 3rem;
+  top: 1rem;
+  display: flex;
+}
+.timer{
+  /* position: absolute;
+  top: 1rem; */
   color: rgb(9, 12, 44);
   font-size: 3rem;
   font-weight: bold;
+}
+.millisec{
+  /* top: 5rem; */
+  margin-left: 2rem;
+  color: red;
 }
 
 .quote-display{
@@ -67,10 +76,6 @@ body .quote-input{
   text-decoration: underline;
   background-color: rgb(117, 117, 117);
 }
-
-
-
-
 
 .correct{
   color: rgb(93, 192, 0);
