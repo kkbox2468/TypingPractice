@@ -74,24 +74,24 @@ quoteInputElement.addEventListener('input', () => {
     console.log(`按鍵次數: ${textAmount}`);
   }
   //印出正確與錯誤次數
-  console.log(`正確次數: ${rightCounter}`);
-  console.log(`錯誤次數: ${wrongCounter}`);
+  // console.log(`正確次數: ${rightCounter}`);
+  // console.log(`錯誤次數: ${wrongCounter}`);
 
-
-  if (secElement.innerText % 15 === 0) {
-    let wpm = Math.floor((textAmount / 1.5));
-    wpmElement.innerText = `${wpm}wpm`
-    //TODO: 計算有誤，textAmount一直往上家，就會速度越來越快，又無法歸零
-    console.log(`-------------${wpm}------------`);
-  }
-
-
-
+  //計算wpm
+  // if (secElement.innerText % 5 === 0) {
+  //   let wpm = Math.floor((textAmount / 0.5));
+  //   wpmElement.innerText = `${wpm}wpm`
+  //   console.log(`-------------${wpm}------------`);
+  //   return textAmount = 0
+  // }
   if (correct) {
     renderNextQuote();
-    textAmount = 0;
+    return textAmount = 0;
   }
 })
+
+
+
 
 /*  抓取隨機英文段落作為題目 */
 function getRandomQuote() {
@@ -141,9 +141,8 @@ function startTimer() {
     // } else {
     // secElement.innerText = getTimerTime()
     // }
-
     // timer.innerText = getTimerTime() //為什麼這行timer也抓得到secElement?
-  }, 100)
+  }, 1000)
 }
 
 function getTimerTime() {
@@ -161,6 +160,15 @@ function playSound() {
   sound.play();
 }
 
+function getWpm(){
+  var a = setInterval(() => {
+    let wpm = Math.floor((textAmount / 0.83));
+    wpmElement.innerText = `${wpm}wpm`
+    console.log(`-------------${wpm}------------`);
+    return textAmount = 0
+  }, 10000);
+}
 
+getWpm();
 renderNextQuote()
 window.addEventListener('keydown', playSound);
