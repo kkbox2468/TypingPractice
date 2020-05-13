@@ -2,16 +2,28 @@
 
 
 <div class="wrap">
+  <%= form_for @message, remote: true do |f| %>
   <div class="container-left">
-    <div class="quote-display" id="quoteDisplay">
-    </div>
-    <textarea id="quoteInput" class="quote-input" autofocus type="hidden">
-    </textarea>
+    <div class="quote-display" id="quoteDisplay"></div>
+    <%= f.text_area :content, class: 'quote-input', 
+                               id: 'quoteInput', 
+                               type: 'hidden',
+                               autofocus: true %>
+    <%= f.submit %>
   </div>
+  <% end %>
+
+  <%= form_for @message, remote: true do |f| %>
   <div class="container-right">
-    <div class="quote-display2" id="quoteDispla2">
-    </div>
-    <textarea id="quoteInput2" class="quote-input2" autofocus type="hidden">
-    </textarea>
+    <div class="quote-display2" id="quoteDisplay2"></div>
+    <%= f.text_area :content, class: 'quote-input2', 
+                               id: 'quoteInput2', 
+                               type: 'hidden',
+                               autofocus: true %>
+    <%= f.submit %>
   </div>
+  <% end %>
 </div>
+
+
+
