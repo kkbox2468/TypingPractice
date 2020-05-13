@@ -93,3 +93,6 @@ body .quote-input{
   color: red;
   background: rgb(255, 182, 182);
 }
+input[type=submit]{
+  display: none;
+}
