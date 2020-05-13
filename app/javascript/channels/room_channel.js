@@ -30,8 +30,6 @@ consumer.subscriptions.create("RoomChannel", {
 
   }
 });
-var submitMsg;
-
 
 window.onload = function () {
   var quoteInputLeft = document.querySelector('#quoteInput');
