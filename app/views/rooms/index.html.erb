@@ -5,5 +5,30 @@
       <%= link_to "新增聊天室", rooms_path, method: "POST" %>
     </li>
   </ul>
-
 </div>
+
+<div>
+<%= form_for @rooms do |f|%>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<%= f.label :description %>
+<%= f.text_field :description %>
+<%= f.submit %>
+
+<% end %>
+</div>
+
+<table>
+  <thead>
+    <th>Room</th>
+    <th>Description</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </thead>
+  <tbody>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tbody>
+</table>

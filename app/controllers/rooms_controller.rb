@@ -1,8 +1,17 @@
 class RoomsController < ApplicationController
   def index
-    @rooms = Room.all
+    @rooms = Room.new
   end
   def create
-    @rooms = Room.new
+    @rooms = Room.new(room_data)
+    if @rooms.save
+      redirect_to rooms_path
+    else
+      render json: room_data
+    end
+  end
+  private
+  def room_data
+    params.require(:room).permit(:name, :description)
   end
 end
