@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_13_045115) do
+ActiveRecord::Schema.define(version: 2020_05_13_063744) do
 
   create_table "achievements", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -43,6 +43,12 @@ ActiveRecord::Schema.define(version: 2020_05_13_045115) do
 
   create_table "javascript_topics", force: :cascade do |t|
     t.text "javascript_topic"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
