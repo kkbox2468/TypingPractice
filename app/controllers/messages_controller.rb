@@ -3,12 +3,12 @@ class MessagesController < ApplicationController
     @message = Message.new
   end
   def create
-    @message = Message.create(msg_params)
-    
     if params[:right_input]
-      ActionCable.server.broadcast 'room_channel', content: @message.content
+      @msg_right = Message.create(msg_params)
+      ActionCable.server.broadcast 'room_channel', content: @msg_right.content, type: 'right'
     else
-
+      @msg_left = Message.create(msg_params)
+      ActionCable.server.broadcast 'room_channel', content: @msg_left.content, type: 'left'
     end
 
   end
