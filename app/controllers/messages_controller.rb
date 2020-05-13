@@ -4,9 +4,13 @@ class MessagesController < ApplicationController
   end
   def create
     @message = Message.create(msg_params)
-    if @message != nil
+    
+    if params[:right_input]
       ActionCable.server.broadcast 'room_channel', content: @message.content
+    else
+
     end
+
   end
 
   private

@@ -12,6 +12,10 @@ consumer.subscriptions.create("RoomChannel", {
 
   received(data) {
     // Called when there's incoming data on the websocket for this channel
+    let quoteDisplay1 = document.querySelector('#quoteDisplay')
+    let quoteDiv1 = document.createElement("div")
+    quoteDiv1.innerText = data.content
+    quoteDisplay1.appendChild(quoteDiv1)
     console.log(data.content);
   }
 });

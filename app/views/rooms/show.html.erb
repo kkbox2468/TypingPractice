@@ -1,5 +1,5 @@
 <h1>Room <%= @room.name%></h1>
-
+<h3><%= @params %></h3>
 
 <div class="wrap">
   <%= form_for @message, remote: true do |f| %>
@@ -9,7 +9,7 @@
                                id: 'quoteInput', 
                                type: 'hidden',
                                autofocus: true %>
-    <%= f.submit %>
+    <%= f.submit name: 'left_input' %>
   </div>
   <% end %>
 
@@ -20,7 +20,7 @@
                                id: 'quoteInput2', 
                                type: 'hidden',
                                autofocus: true %>
-    <%= f.submit %>
+    <%= f.submit name: 'right_input' %>
   </div>
   <% end %>
 </div>
