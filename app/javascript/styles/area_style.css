@@ -19,6 +19,12 @@ body{
 body .quote-input{
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+.wrap{
+  display: flex;
+}
+.container-left, .container-right{
+  margin: 0 10px;
+}
 
 .container{
   background-color: rgba(0, 0, 0,.4);
@@ -46,7 +52,7 @@ body .quote-input{
   color: red;
 }
 
-.quote-display{
+.quote-display, .quote-display2{
   padding-bottom: 1rem;
   margin-left: calc(1rem + 2px);
   margin-right: calc(1rem + 2px);
@@ -54,9 +60,9 @@ body .quote-input{
   /* 要讓display的開頭對齊輸入框內文字開頭 */
 }
 
-.quote-input{
+.quote-input, .quote-input2{
   background-color: transparent;
-  border: 1px solid rgb(105, 105, 105);
+  border: 1px solid rgb(117, 37, 37);
   border-radius: 2px;
   outline: none;
   width: 100%;
@@ -70,8 +76,8 @@ body .quote-input{
   /* color: transparent; */
 }
 
-.quote-input:focus{
-  border-color: rgb(239, 252, 255);
+.quote-input:focus, .quote-input2:focus{
+  border-color: rgb(180, 59, 43);
 }
 .selected{
   text-decoration: underline;

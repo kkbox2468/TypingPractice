@@ -1,6 +1,10 @@
 class RoomsController < ApplicationController
   def index
     @rooms = Room.new
+    @rooms_list = Room.all
+  end
+  def show
+    @room = Room.find(params[:id])
   end
   def create
     @rooms = Room.new(room_data)
