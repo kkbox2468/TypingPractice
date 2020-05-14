@@ -25,14 +25,21 @@ window.onload = function () {
     received(data) {
       var quoteInputRight = document.querySelector('#quoteInput2');
       let quoteDisplay2 = document.querySelector('#quoteDisplay2')
-
       quoteInputRight.innerText = data.content
       const arrayQuote = quoteDisplay2.querySelectorAll('span');
       const arrayValue = quoteInputRight.value.split('')
       const inputIndex = quoteInputRight.value.length
-      checkCharacter(arrayQuote, arrayValue, inputIndex)
-      console.log(data.content);
 
+      let heroElement = document.querySelector('#hero-id')
+      let heroId = Number(heroElement.getAttribute('data-hero-id'))
+
+      if (heroId !== data.message.hero_id) {
+        checkCharacter(arrayQuote, arrayValue, inputIndex)
+        console.log('----------------------');
+        console.log(data.message.hero_id);
+      } else {
+
+      }
     }
   });
 
