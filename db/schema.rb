@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_14_033330) do
+ActiveRecord::Schema.define(version: 2020_05_14_092746) do
 
   create_table "achievements", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -39,6 +39,12 @@ ActiveRecord::Schema.define(version: 2020_05_14_033330) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_battle_records_on_user_id"
+  end
+
+  create_table "heros", force: :cascade do |t|
+    t.string "heroname"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "javascript_topics", force: :cascade do |t|
