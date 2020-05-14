@@ -6,14 +6,14 @@ window.onload = function () {
   let roomId = roomElement.getAttribute('data-room-id')
   console.log(roomId);
 
-    /* 終止前一個channel subscription 
+    /* 終止前一個channel subscription */
   consumer.subscriptions.subscriptions.forEach((subscription) => {
     consumer.subscriptions.remove(subscription)
     console.log('disconnected...');
-  })*/
+  })
 
   /* Action Cable 啟用 */
-  consumer.subscriptions.create({ channel: "RoomChannel", room_id: 1}, {
+  consumer.subscriptions.create({ channel: "RoomChannel", room_id: roomId}, {
     connected() {
       console.log('Connected to room ... ' + roomId );
     },

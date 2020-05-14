@@ -4,17 +4,17 @@ class MessagesController < ApplicationController
   end
   def create
     if params[:right_input]
-      @msg_right = Message.create(msg_params)
-      ActionCable.server.broadcast "room_channel_#{message.room_id}", content: @msg_right.content, type: 'right'
+      @msg_right = Message.new(msg_params)
+      ActionCable.server.broadcast "room_channel_#{@msg_right.room_id}", content: @msg_right.content, type: 'right'
     else
-      @msg_left = Message.create(msg_params)
-      ActionCable.server.broadcast "room_channel_1", content: @msg_left.content, type: 'left'
+      @msg_left = Message.new(msg_params)
+      ActionCable.server.broadcast "room_channel_#{@msg_left.room_id}", content: @msg_left.content, type: 'left'
     end
 
   end
 
   private
   def msg_params
-    params.require(:message).permit(:content)
+    params.require(:message).permit(:content, :room_id)
   end
 end
