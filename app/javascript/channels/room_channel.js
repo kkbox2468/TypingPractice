@@ -25,8 +25,8 @@ window.onload = function () {
     received(data) {
       let quoteDisplay1 = document.querySelector('#quoteDisplay')
       let quoteDisplay2 = document.querySelector('#quoteDisplay2')
-      let quoteDiv1 = document.createElement("div")
-      let quoteDiv2 = document.createElement("div")
+      let quoteDiv1 = document.createElement("span")
+      let quoteDiv2 = document.createElement("span")
   
       if (data.type === 'right') {
         quoteDiv2.innerText = data.content
@@ -49,21 +49,23 @@ window.onload = function () {
   function typeInputL(e) {
     e.preventDefault();
     console.log(quoteInputLeft.value);
-
-    if (e.keyCode === 13) {
-      submitBtnLeft.click();
-      quoteInputLeft.value = ''
-    }
+    submitBtnLeft.click();
+    
+    quoteInputLeft.value = ''
+    // if (e.keyCode === 13) {
+    //   submitBtnLeft.click();
+    //   quoteInputLeft.value = ''
+    // }
   }
   function typeInputR(e) {
     e.preventDefault();
     console.log(quoteInputRight.value);
-
-    if (e.keyCode === 13) {
-      submitBtnRight.click();
-      quoteInputRight.value = ''
-
-    }
+    submitBtnRight.click();
+    quoteInputLeft.value = ''
+    // if (e.keyCode === 13) {
+    //   submitBtnRight.click();
+    //   quoteInputRight.value = ''
+    // }
   }
 
   quoteInputLeft.addEventListener('change', typeInputL)
