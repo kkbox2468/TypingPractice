@@ -23,54 +23,63 @@ window.onload = function () {
     },
   
     received(data) {
-      let quoteDisplay1 = document.querySelector('#quoteDisplay')
+      var quoteInputRight = document.querySelector('#quoteInput2');
       let quoteDisplay2 = document.querySelector('#quoteDisplay2')
-      let quoteDiv1 = document.createElement("span")
-      let quoteDiv2 = document.createElement("span")
-  
-      if (data.type === 'right') {
-        quoteDiv2.innerText = data.content
-        quoteDisplay2.appendChild(quoteDiv2)
-        // console.log(data.content);
-      } else {
-        quoteDiv1.innerText = data.content
-        quoteDisplay1.appendChild(quoteDiv1)
-        // console.log(data.content);
-      }
+
+      quoteInputRight.innerText = data.content
+      const arrayQuote = quoteDisplay2.querySelectorAll('span');
+      const arrayValue = quoteInputRight.value.split('')
+      const inputIndex = quoteInputRight.value.length
+      checkCharacter(arrayQuote, arrayValue, inputIndex)
+      console.log(data.content);
+
     }
   });
 
   /* 控制左右輸入框事件 */
   var quoteInputLeft = document.querySelector('#quoteInput');
-  var quoteInputRight = document.querySelector('#quoteInput2');
   var submitBtnLeft = document.querySelector('input[name="left_input"]')
   var submitBtnRight = document.querySelector('input[name="right_input"]')
+  let quoteDisplay1 = document.querySelector('#quoteDisplay')
+  let quoteDiv1 = document.createElement("span")
+  let quoteDiv2 = document.createElement("span")
+  
 
-  function typeInputL(e) {
+  function typeInput(e) {
     e.preventDefault();
     console.log(quoteInputLeft.value);
-    submitBtnLeft.click();
-    
-    quoteInputLeft.value = ''
-    // if (e.keyCode === 13) {
-    //   submitBtnLeft.click();
-    //   quoteInputLeft.value = ''
-    // }
+    // submitBtnLeft.click();
+    // quoteInputLeft.value = ''
   }
-  function typeInputR(e) {
-    e.preventDefault();
-    console.log(quoteInputRight.value);
-    submitBtnRight.click();
-    quoteInputLeft.value = ''
-    // if (e.keyCode === 13) {
-    //   submitBtnRight.click();
-    //   quoteInputRight.value = ''
-    // }
+  // quoteInputLeft.addEventListener('change', typeInput)
+  // quoteInputLeft.addEventListener('keyup', typeInput)
+
+  quoteInputLeft.addEventListener('input', () => {
+    const arrayQuote = quoteDisplay1.querySelectorAll('span');
+    const arrayValue = quoteInputLeft.value.split('')
+    const inputIndex = quoteInputLeft.value.length
+    checkCharacter(arrayQuote, arrayValue, inputIndex)
+    submitBtnLeft.click()
+  })
+
+
+  function checkCharacter(arrayQuote, arrayValue, inputIndex) {
+    arrayQuote.forEach((characterSpan, index) => {
+      const character = arrayValue[index]
+
+      if (character == null){
+        characterSpan.classList.remove('correct')
+        characterSpan.classList.remove('incorrect')
+        arrayQuote[inputIndex].classList.add('selected')
+        arrayQuote[inputIndex + 1 ].classList.remove('selected')
+        arrayQuote[inputIndex - 1 ].classList.remove('selected')
+      } else if (character === characterSpan.innerText){
+        characterSpan.classList.add('correct')
+        characterSpan.classList.remove('incorrect')
+      } else {
+        characterSpan.classList.remove('correct')
+        characterSpan.classList.add('incorrect')
+      }
+    })
   }
-
-  quoteInputLeft.addEventListener('change', typeInputL)
-  quoteInputLeft.addEventListener('keyup', typeInputL)
-  quoteInputRight.addEventListener('change', typeInputR)
-  quoteInputRight.addEventListener('keyup', typeInputR)
-
 }

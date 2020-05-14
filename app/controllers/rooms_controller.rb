@@ -6,6 +6,8 @@ class RoomsController < ApplicationController
   def show
     @room = Room.find(params[:id])
     @message = Message.new
+    test_topic = "It’s not about ideas. It’s about making ideas happen."
+    @topic = test_topic.split(//)
   end
   def create
     @rooms = Room.new(room_data)
