@@ -93,6 +93,7 @@ body .quote-input{
   color: red;
   background: rgb(255, 182, 182);
 }
-input[type=submit]{
+
+input[name=left_input], input[name=right_input]{
   display: none;
 }
