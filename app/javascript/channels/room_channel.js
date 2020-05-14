@@ -35,8 +35,7 @@ window.onload = function () {
 
       if (heroId !== data.message.hero_id) {
         checkCharacter(arrayQuote, arrayValue, inputIndex)
-        console.log('----------------------');
-        console.log(data.message.hero_id);
+        console.log('Hero ID -' + data.message.hero_id);
       } else {
 
       }
