@@ -1,0 +1,35 @@
+<%= javascript_pack_tag 'channels', 'data-turbolinks-track': 'reload' %>
+
+
+<div id="room-id" data-room-id="<%= @room.id %>"><%= @room.id %></div>
+<h1>Room <%= @room.name%></h1>
+<h3><%= @params %></h3>
+
+<div class="wrap">
+  <%= form_for @message, remote: true do |f| %>
+  <%= f.hidden_field :room_id, value: @room.id %>
+  <div class="container-left">
+    <div class="quote-display" id="quoteDisplay"></div>
+    <%= f.text_area :content, class: 'quote-input', 
+                               id: 'quoteInput', 
+                               type: 'hidden',
+                               autofocus: true %>
+    <%= f.submit name: 'left_input'%>
+  </div>
+  <% end %>
+
+  <%= form_for @message, remote: true do |f| %>
+  <%= f.hidden_field :room_id, value: @room.id %>
+  <div class="container-right">
+    <div class="quote-display2" id="quoteDisplay2"></div>
+    <%= f.text_area :content, class: 'quote-input2', 
+                               id: 'quoteInput2', 
+                               type: 'hidden',
+                               autofocus: true %>
+    <%= f.submit name: 'right_input' %>
+  </div>
+  <% end %>
+</div>
+
+
+
